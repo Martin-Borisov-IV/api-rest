@@ -20,15 +20,15 @@ if ( strcmp($_SERVER['REQUEST_METHOD'], 'GET') == 0) {
 	) {
 
 		$insert_query = "INSERT INTO `user` (`email`, 
-											 `first_name`, 
-											 `last_name`, 
-											 `type`, 
-											 `workplace_id`)
-									 VALUES (:email, 
-									         :first_name, 
-											 :last_name, 
-											 :type, 
-											 :workplace_id);";
+						     `first_name`, 
+						     `last_name`, 
+					             `type`, 
+						     `workplace_id`)
+					     VALUES (:email, 
+                                                     :first_name, 
+						     :last_name, 
+						     :type, 
+						     :workplace_id);";
 		
 		$db_request = $pdo->prepare($insert_query);
 		$db_request->bindParam(':email',        $_POST['email']);
@@ -82,9 +82,8 @@ if ( strcmp($_SERVER['REQUEST_METHOD'], 'GET') == 0) {
 			                    SET ";
 			foreach($known_keys as $key => $value) {
 				$update_set_clause_elements[] = " `$key` = :$key ";
-
-				//$db_request->bindParam(":$key", $value);
 			}
+			
 			$update_query .= implode(",", $update_set_clause_elements);
 			$update_query .= "WHERE `id` = :userid";
 			
