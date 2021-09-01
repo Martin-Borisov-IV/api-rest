@@ -60,7 +60,7 @@ if ( strcmp($_SERVER['REQUEST_METHOD'], 'GET') == 0) {
 		$known_keys                 = array();
 		$update_set_clause_elements = array();
 		$allowed_fields_for_update  = array("email", "first_name", "last_name");
-        $input_post_data            = explode('&', $input_post_data);
+                $input_post_data            = explode('&', $input_post_data);
 
 		foreach($input_post_data as $pair) {
             $pair = explode('=', $pair);
