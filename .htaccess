@@ -1,0 +1,7 @@
+RewriteEngine On
+RewriteRule ^user/?$ user/index.php
+RewriteRule ^user/([0-9]+)?$ user/index.php?id=$1
+RewriteRule ^hospital/?$ hospital/index.php
+RewriteRule ^hospital/([0-9]+)?$ hospital/index.php?id=$1
+RewriteRule ^filter/users/(.+)?$ filter/list_users.php?param=$1
+RewriteRule ^filter/hospitals/((desc)|(asc))$ filter/list_hospitals.php?order=$1
