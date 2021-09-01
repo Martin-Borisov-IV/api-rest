@@ -18,11 +18,11 @@ if ( strcmp($_SERVER['REQUEST_METHOD'], 'GET') == 0) {
 		!empty($_POST['phone'])) {
 
 		$insert_query = "INSERT INTO `hospital` (`name`, 
-											     `address`, 
-											     `phone`)
-									     VALUES (:name, 
-									             :address, 
-											     :phone);";
+					                 `address`, 
+		                                         `phone`)
+						 VALUES (:name, 
+	                                                 :address, 
+					                 :phone);";
 		
 		$db_request = $pdo->prepare($insert_query);
 		$db_request->bindParam(':name',    $_POST['name']);
@@ -51,12 +51,12 @@ if ( strcmp($_SERVER['REQUEST_METHOD'], 'GET') == 0) {
 		$known_keys                 = array();
 		$update_set_clause_elements = array();
 		$allowed_fields_for_update  = array("name", "address", "phone");
-        $input_post_data            = explode('&', $input_post_data);
+                $input_post_data            = explode('&', $input_post_data);
 
 		foreach($input_post_data as $pair) {
-            $pair = explode('=', $pair);
-            $pair_params[$pair[0]] = $pair[1];
-        }
+            		$pair = explode('=', $pair);
+            		$pair_params[$pair[0]] = $pair[1];
+        	}
 		
 		foreach($pair_params as $inp_key => $inp_val) {
 			if (in_array($inp_key, $allowed_fields_for_update) === false) {
@@ -73,9 +73,8 @@ if ( strcmp($_SERVER['REQUEST_METHOD'], 'GET') == 0) {
 			                    SET ";
 			foreach($known_keys as $key => $value) {
 				$update_set_clause_elements[] = " `$key` = :$key ";
-
-				//$db_request->bindParam(":$key", $value);
 			}
+			
 			$update_query .= implode(",", $update_set_clause_elements);
 			$update_query .= "WHERE `id` = :hospitalid";
 			
