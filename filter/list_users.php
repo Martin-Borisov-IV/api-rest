@@ -17,7 +17,7 @@ if ( strcmp($_SERVER['REQUEST_METHOD'], 'GET') == 0) {
 			$u = "%" . $input_param . "%";
 			$get_hospital_ids_query = "SELECT `id`
 			                             FROM `hospital`
-									 	WHERE `name` LIKE ?";
+						    WHERE `name` LIKE ?";
 			
 			//echo "Result " . print_r($get_hospital_ids_query, true) . PHP_EOL;
 
@@ -42,9 +42,9 @@ if ( strcmp($_SERVER['REQUEST_METHOD'], 'GET') == 0) {
 		$str_ids = implode(", ", array_fill(0, count($array_ids), '?'));
 		
 		$select_query = "SELECT * 
-	                       FROM `user` 
-					      WHERE `type` =  1 
-						    AND workplace_id IN ($str_ids) ";
+	                           FROM `user` 
+			          WHERE `type` =  1 
+				    AND workplace_id IN ($str_ids) ";
 
 		$db_request = $pdo->prepare($select_query);
 		
