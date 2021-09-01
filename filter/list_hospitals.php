@@ -9,12 +9,12 @@ if ( strcmp($_SERVER['REQUEST_METHOD'], 'GET') == 0) {
 
 			$select_query = "SELECT t.hospital_name,
 			                        t.count_employees
-							   FROM (SELECT h.name AS `hospital_name`, 
+					   FROM (SELECT h.name AS `hospital_name`, 
 			                                COUNT(u.id) AS `count_employees`
-	                                   FROM `hospital` AS h
-							           JOIN `user` AS u ON u.workplace_id = h.id AND u.type = 1
-							          GROUP BY h.name) AS t
-						   ORDER BY count_employees " . strtoupper($_GET['order']) . " , hospital_name";
+	                                           FROM `hospital` AS h
+					           JOIN `user` AS u ON u.workplace_id = h.id AND u.type = 1
+					       GROUP BY h.name) AS t
+				       ORDER BY count_employees " . strtoupper($_GET['order']) . " , hospital_name";
 			/* when the count is the same, order by the name of the hospital */
 
 			$db_request = $pdo->prepare($select_query);
